@@ -17,13 +17,13 @@ const Navbar = () => {
       />
 
       {/* page links  */}
-      <nav className={`d-flex gap-5 align-items-center nav`}>
+      <nav className={`d-flex gap-5 align-items-center`}>
         <NavLink to="/">Products</NavLink>
         <NavLink to="/cart">Cart</NavLink>
       </nav>
 
       {/* deven socials */}
-      <nav className="d-flex align-items-center gap-4 nav">
+      <nav className="d-flex align-items-center gap-4">
         <NavLink to="https://deven-portfolio.netlify.app/" target="_blank">
           Portfolio
         </NavLink>
