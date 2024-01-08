@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import Products from "./Pages/Products/Products";
 import SingleProduct from "./Pages/Products/SingleProduct";
 import Cart from "./Pages/Cart/Cart";
+import Checkout from "./Pages/Checkout/Checkout";
 
 // css files
 import "react-loading-skeleton/dist/skeleton.css";
@@ -21,6 +22,7 @@ function App() {
         <Route path="/" element={<Products />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/food/:foodId" element={<SingleProduct />} />
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
     </div>
   );

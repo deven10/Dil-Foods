@@ -19,7 +19,7 @@ const FoodsContext = ({ children }) => {
 
   const addToCart = (foodId) => {
     const temp = foodsList.map((food) =>
-      +food.id === +foodId ? { ...food, isInCart: true } : food
+      +food.id === +foodId ? { ...food, isInCart: true, cartQty: 1 } : food
     );
     localStorage.setItem("allFoodsData", JSON.stringify(temp));
     setFoodsList(() => temp);
@@ -27,7 +27,30 @@ const FoodsContext = ({ children }) => {
 
   const removeFromCart = (foodId) => {
     const temp = foodsList.map((food) =>
-      +food.id === +foodId ? { ...food, isInCart: false } : food
+      +food.id === +foodId ? { ...food, isInCart: false, cartQty: 0 } : food
+    );
+    localStorage.setItem("allFoodsData", JSON.stringify(temp));
+    setFoodsList(() => temp);
+  };
+
+  const increaseCartQty = (foodId) => {
+    const temp = foodsList.map((food) =>
+      +food.id === +foodId ? { ...food, cartQty: food.cartQty + 1 } : food
+    );
+    localStorage.setItem("allFoodsData", JSON.stringify(temp));
+    setFoodsList(() => temp);
+  };
+
+  const decreaseCartQty = (foodId) => {
+    const temp = foodsList.map((food) =>
+      +food.id === +foodId
+        ? food.cartQty > 1
+          ? {
+              ...food,
+              cartQty: food.cartQty - 1,
+            }
+          : { ...food, isInCart: false, cartQty: 0 }
+        : food
     );
     localStorage.setItem("allFoodsData", JSON.stringify(temp));
     setFoodsList(() => temp);
@@ -35,7 +58,14 @@ const FoodsContext = ({ children }) => {
 
   return (
     <ContextFoods.Provider
-      value={{ foodsList, setFoodsList, addToCart, removeFromCart }}
+      value={{
+        foodsList,
+        setFoodsList,
+        addToCart,
+        removeFromCart,
+        increaseCartQty,
+        decreaseCartQty,
+      }}
     >
       {children}
     </ContextFoods.Provider>

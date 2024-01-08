@@ -28,6 +28,9 @@ const SingleProduct = () => {
           ))}
         </p>
         <p>Rating: {singleFood?.rating} ⭐</p>
+        <p>
+          Price: <span className="food-price">${singleFood.price}</span>
+        </p>
         {singleFood.isInCart ? (
           <button
             onClick={() => removeFromCart(singleFood.id)}

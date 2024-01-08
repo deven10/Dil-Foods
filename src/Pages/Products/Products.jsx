@@ -28,7 +28,7 @@ const Products = () => {
             >
               {food.summary}
             </p>
-            <div className="d-flex justify-content-center align-items-center gap-3">
+            <div className="d-flex justify-content-center align-items-center gap-4">
               <p className="food-price">Price: ${food.price}</p>
               {food.isInCart ? (
                 <button
