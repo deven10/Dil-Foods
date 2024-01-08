@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 
 // routes
 import Products from "./Pages/Products/Products";
+import SingleProduct from "./Pages/Products/SingleProduct";
 import Cart from "./Pages/Cart/Cart";
 
 // css files
@@ -19,6 +20,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Products />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/food/:foodId" element={<SingleProduct />} />
       </Routes>
     </div>
   );
