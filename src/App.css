@@ -129,6 +129,13 @@ nav a.active {
   padding: 10px 100px 0px 100px;
 }
 
+.checkout-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 100px;
+}
+
 .no-data {
   font-weight: 500;
   font-size: 1.8rem;
@@ -146,4 +153,16 @@ nav a.active {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.checkout-cart-food {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.checkout-cart-img {
+  height: 150px;
+  width: 150px;
+  object-fit: cover;
 }
