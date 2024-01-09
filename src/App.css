@@ -14,7 +14,7 @@ nav a.active {
 
 .card {
   width: 300px;
-  height: 400px;
+  height: 450px;
   border-radius: 6px;
   border: 1px solid #ccc;
   display: flex;
@@ -33,7 +33,7 @@ nav a.active {
 }
 
 .food-title {
-  font-size: 2rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: #111;
   padding: 8px;
@@ -41,7 +41,7 @@ nav a.active {
 }
 
 .food-description {
-  font-size: 1.4rem;
+  font-size: 0.9rem;
   font-weight: 500;
   color: #111;
   line-height: 1.25;
@@ -51,7 +51,7 @@ nav a.active {
 }
 
 .food-price {
-  font-size: 1.7rem;
+  font-size: 1rem;
   font-weight: 600;
   color: #111;
   line-height: 1.25;
@@ -62,7 +62,7 @@ nav a.active {
 .add-to-cart-btn {
   padding: 8px 15px;
   margin: 8px 0px;
-  font-size: 1.4rem;
+  font-size: 0.8rem;
   cursor: pointer;
   border: 0;
   border-radius: 6px;
@@ -106,7 +106,7 @@ nav a.active {
 
 .food-details p {
   font-weight: 500;
-  font-size: 1.6rem;
+  font-size: 1rem;
   margin: 0px 0px 8px 0px;
 }
 
@@ -115,7 +115,7 @@ nav a.active {
   border-radius: 5px;
   background-color: #d33;
   color: #fff;
-  font-size: 1.2rem;
+  font-size: 0.8rem;
   margin-left: 6px;
   cursor: default;
   letter-spacing: 0.5px;
@@ -132,18 +132,19 @@ nav a.active {
 .checkout-wrapper {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: start;
+  flex-wrap: wrap;
   padding: 25px 100px;
 }
 
 .no-data {
   font-weight: 500;
-  font-size: 1.8rem;
+  font-size: 1.2rem;
 }
 
 .increment,
 .decrement {
-  font-size: 1.8rem;
+  font-size: 1.2rem;
   height: 26px;
   width: 26px;
   border-radius: 50%;
@@ -156,13 +157,89 @@ nav a.active {
 }
 
 .checkout-cart-food {
-  padding: 10px;
+  padding: 5px;
   border-radius: 6px;
   border: 1px solid #ccc;
 }
 
 .checkout-cart-img {
-  height: 150px;
-  width: 150px;
+  height: 250px;
+  width: 250px;
   object-fit: cover;
+}
+
+.checkout-cart-food p {
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+.checkout-wrapper form {
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  padding: 12px 15px;
+  width: 100%;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  gap: 3px;
+  margin-bottom: 15px;
+}
+
+.group label {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.group input,
+.group select {
+  font-size: 0.8rem;
+  font-weight: 400;
+  width: 100%;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.order-summary-wrapper {
+  padding: 10px 100px 0px 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+}
+
+.order-summary {
+  padding: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.item-wrapper {
+  background-color: #f8f8f8;
+  border-radius: 6px;
+  margin: 8px 0px;
+  padding: 10px;
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  gap: 15px;
+  width: 100%;
+}
+
+.item-wrapper img {
+  height: 100%;
+  width: 175px;
+  object-fit: cover;
+}
+
+.confirm-order-animation {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

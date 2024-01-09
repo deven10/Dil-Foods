@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { foodList } from "../data/data";
+import toast from "react-hot-toast";
 
 export const ContextFoods = createContext();
 
@@ -23,6 +24,7 @@ const FoodsContext = ({ children }) => {
     );
     localStorage.setItem("allFoodsData", JSON.stringify(temp));
     setFoodsList(() => temp);
+    toast.success("Added in Cart Successfully!");
   };
 
   const removeFromCart = (foodId) => {
@@ -31,6 +33,7 @@ const FoodsContext = ({ children }) => {
     );
     localStorage.setItem("allFoodsData", JSON.stringify(temp));
     setFoodsList(() => temp);
+    toast.success("Removed from Cart!");
   };
 
   const increaseCartQty = (foodId) => {
@@ -39,6 +42,7 @@ const FoodsContext = ({ children }) => {
     );
     localStorage.setItem("allFoodsData", JSON.stringify(temp));
     setFoodsList(() => temp);
+    toast.success("Increased Quantity Successfully!");
   };
 
   const decreaseCartQty = (foodId) => {
@@ -54,6 +58,7 @@ const FoodsContext = ({ children }) => {
     );
     localStorage.setItem("allFoodsData", JSON.stringify(temp));
     setFoodsList(() => temp);
+    toast.success("Decreased Quantity Successfully!");
   };
 
   return (

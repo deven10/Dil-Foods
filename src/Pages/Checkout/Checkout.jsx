@@ -1,8 +1,12 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 import { ContextFoods } from "../../Context/FoodsContext";
+import { totalAmount } from "../../utils/utilityFunctions";
+import toast from "react-hot-toast";
 
 const Checkout = () => {
-  const { foodsList } = useContext(ContextFoods);
+  const navigate = useNavigate();
+  const { foodsList, setFoodsList } = useContext(ContextFoods);
   const [checkoutForm, setCheckoutForm] = useState({
     name: "",
     email: "",
@@ -10,38 +14,73 @@ const Checkout = () => {
     address: "",
     paymentMode: "",
   });
+
   const foodsInCart = foodsList.filter(({ isInCart }) => isInCart);
+  const totalCartValue = useMemo(() => totalAmount(foodsInCart), [foodsInCart]);
+
+  const confirmOrder = () => {
+    toast.success("Order Confirmed Successfully!");
+    setCheckoutForm({
+      name: "",
+      email: "",
+      phone: "",
+      address: "",
+      paymentMode: "",
+    });
+
+    navigate("/order-summary", {
+      state: {
+        ...checkoutForm,
+        total: totalCartValue,
+        items: foodsInCart,
+      },
+    });
+
+    const defaultFoodsList = foodsList.map((food) => ({
+      ...food,
+      isInCart: false,
+      cartQty: 0,
+    }));
+
+    setFoodsList(() => defaultFoodsList);
+    localStorage.setItem("allFoodsData", JSON.stringify(defaultFoodsList));
+  };
 
   const handleConfirmOrder = (e) => {
     e.preventDefault();
-    console.log("checkoutForm:", checkoutForm);
+    if (checkoutForm.paymentMode !== "") {
+      confirmOrder();
+    } else {
+      toast.error("Please fill all the details");
+    }
   };
+
   return (
-    <div className="checkout-wrapper">
-      <div className="flex-1">
-        <h2>Your Cart</h2>
-        <div className="d-flex flex-column justify-content-center align-items-start gap-4">
+    <div className="checkout-wrapper w-100">
+      <div className="w-75">
+        <h4 className="mb-3">Your Cart</h4>
+        <div className="d-flex flex-wrap justify-content-start align-items-start gap-4">
           {foodsInCart.map((food) => (
             <div
               key={food.id}
-              className="d-flex justify-content-start align-items-center gap-4 mb-3 checkout-cart-food"
+              className="d-flex flex-column justify-content-start align-items-center gap-3 checkout-cart-food"
             >
               <img
                 className="checkout-cart-img"
                 src={food.imageURL}
                 alt={food.title}
               />
-              <div className="d-flex flex-column justify-content-start align-items-start">
-                <h3>{food.title}</h3>
-                <p className="food-price">Price:${food.price}</p>
-                <p className="food-price">QTY: {food.cartQty}</p>
+              <h5>{food.title}</h5>
+              <div className="w-75 d-flex gap-4 justify-content-center align-items-center mb-1">
+                <p>Price: ${food.price}</p>
+                <p>QTY: {food.cartQty}</p>
               </div>
             </div>
           ))}
         </div>
       </div>
-      <div className="flex-1">
-        <h5>Checkout Form</h5>
+      <div className="w-25">
+        <h4 className="mb-3">Checkout Form</h4>
         <form onSubmit={handleConfirmOrder}>
           <div className="group">
             <label htmlFor="name">Name</label>
@@ -56,6 +95,7 @@ const Checkout = () => {
                   name: e.target.value,
                 }))
               }
+              required
             />
           </div>
           <div className="group">
@@ -71,6 +111,7 @@ const Checkout = () => {
                   email: e.target.value,
                 }))
               }
+              required
             />
           </div>
           <div className="group">
@@ -86,6 +127,7 @@ const Checkout = () => {
                   phone: e.target.value,
                 }))
               }
+              required
             />
           </div>
           <div className="group">
@@ -101,6 +143,7 @@ const Checkout = () => {
                   address: e.target.value,
                 }))
               }
+              required
             />
           </div>
           <div className="group">
@@ -114,14 +157,20 @@ const Checkout = () => {
                 }))
               }
             >
-              <option selected value="">
-                Select Option
-              </option>
+              <option value="">Select Option</option>
               <option value="Cash On Delivery">Cash On Delivery</option>
               <option value="Net-Banking">Net-Banking</option>
+              <option value="UPI">UPI</option>
             </select>
           </div>
-          <button type="submit">Confirm Order</button>
+          <div className="d-flex align-items-center gap-4">
+            <button className="add-to-cart-btn" type="submit">
+              Confirm Order
+            </button>
+            <p className="food-price">
+              Total Checkout value: ${totalCartValue}
+            </p>
+          </div>
         </form>
       </div>
     </div>

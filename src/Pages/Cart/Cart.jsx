@@ -1,6 +1,7 @@
 import { useContext, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { ContextFoods } from "../../Context/FoodsContext";
+import { totalAmount } from "../../utils/utilityFunctions";
 
 const Cart = () => {
   const navigate = useNavigate();
@@ -11,12 +12,7 @@ const Cart = () => {
     return foodsList.filter(({ isInCart }) => isInCart);
   }, [foodsList]);
 
-  const totalCartValue = useMemo(() => {
-    return foodsInCart.reduce(
-      (accumulator, current) => accumulator + current.price * current.cartQty,
-      0
-    );
-  }, [foodsInCart]);
+  const totalCartValue = useMemo(() => totalAmount(foodsInCart), [foodsInCart]);
 
   return (
     <div className="cart-wrapper">

@@ -1,10 +1,12 @@
 import { Routes, Route } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
 // routes
 import Products from "./Pages/Products/Products";
 import SingleProduct from "./Pages/Products/SingleProduct";
 import Cart from "./Pages/Cart/Cart";
 import Checkout from "./Pages/Checkout/Checkout";
+import OrderSummary from "./Pages/OrderSummary/OrderSummary";
 
 // css files
 import "react-loading-skeleton/dist/skeleton.css";
@@ -23,7 +25,9 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/food/:foodId" element={<SingleProduct />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/order-summary" element={<OrderSummary />} />
       </Routes>
+      <Toaster position="top-center" />
     </div>
   );
 }

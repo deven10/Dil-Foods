@@ -1,6 +1,8 @@
 .navbar {
+  position: relative;
   padding: 15px 100px;
   background-color: #f8f8f8;
+  z-index: 1;
 }
 
 .navbar img {
@@ -13,7 +15,7 @@
 .navbar nav a {
   color: #353535;
   text-decoration: none;
-  font-size: 1.8rem;
+  font-size: 1.2rem;
   font-weight: 400;
   position: relative;
 }
