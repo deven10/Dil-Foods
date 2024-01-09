@@ -1,8 +1,5 @@
-# React + Vite
+Dil Foods Frontend Developer Assignment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Used Context API along with useState for Storing the data & passing the data throughout the whole app. 
+Also have stored the data in localStorage for Data persistence. 
+Once the user add any item in the Cart & checkouts for placing the order, a confetti is used for showcasing the user that their order is confirmed & placed successfully. 
