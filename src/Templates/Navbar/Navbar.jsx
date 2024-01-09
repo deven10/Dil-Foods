@@ -10,7 +10,7 @@ const Navbar = () => {
     >
       {/* logo */}
       <img
-        src="../../src/assets/cropped-Dil-Foods-new-logo-180x180.png"
+        src="https://dilfoods.in/wp-content/uploads/2023/04/Dil-Foods-new-logo.png"
         alt="logo"
         loading="lazy"
         onClick={() => navigate("/")}
