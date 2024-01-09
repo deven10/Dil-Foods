@@ -1,6 +1,7 @@
 import { NavLink, useNavigate } from "react-router-dom";
 
 import styles from "./Navbar.module.css";
+import logo from "../../assets/cropped-Dil-Foods-new-logo-180x180.png";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -9,12 +10,7 @@ const Navbar = () => {
       className={`w-100 d-flex justify-content-between align-items-center gap-4 ${styles.navbar}`}
     >
       {/* logo */}
-      <img
-        src="https://dilfoods.in/wp-content/uploads/2023/04/Dil-Foods-new-logo.png"
-        alt="logo"
-        loading="lazy"
-        onClick={() => navigate("/")}
-      />
+      <img src={logo} alt="logo" loading="lazy" onClick={() => navigate("/")} />
 
       {/* page links  */}
       <nav className={`d-flex gap-5 align-items-center`}>
